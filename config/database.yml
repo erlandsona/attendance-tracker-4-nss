@@ -78,8 +78,3 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: attendance-tracker-4-nss_production
-  username: attendance-tracker-4-nss
-  password: <%= ENV['ATTENDANCE-TRACKER-4-NSS_DATABASE_PASSWORD'] %>
