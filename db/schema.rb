@@ -11,13 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604200052) do
+ActiveRecord::Schema.define(version: 20150605222819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "StudentsTardies", id: false, force: :cascade do |t|
+    t.integer "tardy_id"
+    t.integer "student_id"
+  end
+
+  add_index "StudentsTardies", ["student_id"], name: "index_StudentsTardies_on_student_id", using: :btree
+  add_index "StudentsTardies", ["tardy_id"], name: "index_StudentsTardies_on_tardy_id", using: :btree
+
   create_table "students", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tardies", force: :cascade do |t|
+    t.date     "date"
+    t.boolean  "present"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
